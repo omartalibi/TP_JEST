@@ -104,3 +104,28 @@ it("intersection/when_interval1_different_interval2", function(){
     let interval2 = new Interval(1,4)
     expect(interval1.intersection(interval2)).toEqual([]);
 })
+
+//====
+it("exclusion/when_interval1_different_interval2", function(){
+    let interval1 = new Interval(1,10)
+    let interval2 = new Interval(2,9)
+    expect(interval1.exclusion(interval2)).toEqual([1,2],[9,10]);
+})
+
+it("exclusion/when_interval2_different_interval1", function(){
+    let interval1 = new Interval(2,9)
+    let interval2 = new Interval(1,10)
+    expect(interval1.exclusion(interval2)).toEqual([1,2],[9,10]);
+})
+
+it("exclusion/when_interval1_inside_interval2", function(){
+    let interval1 = new Interval(11,20)
+    let interval2 = new Interval(1,10)
+    expect(interval1.exclusion(interval2)).toEqual([11,20]);
+})
+
+it("exclusion/when_interval2_inside_interval1", function(){
+    let interval1 = new Interval(1,10)
+    let interval2 = new Interval(11,20)
+    expect(interval1.exclusion(interval2)).toEqual([1,2],[9,10]);
+})
