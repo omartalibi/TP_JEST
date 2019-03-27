@@ -56,26 +56,51 @@ it("includes/when_interval1_Equals_interval2", function(){
 
 //======
 
-it("includes/when_interval1_BiggerThan_interval2", function(){
+it("union/when_interval1_BiggerThan_interval2", function(){
     let interval1 = new Interval(1,20)
     let interval2 = new Interval(4,9)
     expect(interval1.union(interval2)).toEqual([1,20]);
 })
 
-it("includes/when_interval1_inside_interval2", function(){
+it("union/when_interval1_inside_interval2", function(){
     let interval1 = new Interval(4,7)
     let interval2 = new Interval(1,8)
     expect(interval1.union(interval2)).toEqual([1,8]);
 })
 
-it("includes/when_interval1_partiallyInside_interval2", function(){
+it("union/when_interval1_partiallyInside_interval2", function(){
     let interval1 = new Interval(1,6)
     let interval2 = new Interval(2,10)
     expect(interval1.union(interval2)).toEqual([1,10]);
 })
 
-it("includes/when_interval2_partiallyInside_interval1", function(){
+it("union/when_interval2_partiallyInside_interval1", function(){
     let interval1 = new Interval(2,7)
     let interval2 = new Interval(1,6)
     expect(interval1.union(interval2)).toEqual([1,7]);
+})
+
+//=======
+it("intersection/when_interval1_sameStart_interval2", function(){
+    let interval1 = new Interval(3,7)
+    let interval2 = new Interval(3,4)
+    expect(interval1.intersection(interval2)).toEqual([3,4]);
+})
+
+it("intersection/when_interval1_sameEnd_interval2", function(){
+    let interval1 = new Interval(7,10)
+    let interval2 = new Interval(8,10)
+    expect(interval1.intersection(interval2)).toEqual([7,8]);
+})
+
+it("intersection/when_interval1_same_interval2", function(){
+    let interval1 = new Interval(5,7)
+    let interval2 = new Interval(5,7)
+    expect(interval1.intersection(interval2)).toEqual([5,7]);
+})
+
+it("intersection/when_interval1_different_interval2", function(){
+    let interval1 = new Interval(7,9)
+    let interval2 = new Interval(1,4)
+    expect(interval1.intersection(interval2)).toEqual([]);
 })
